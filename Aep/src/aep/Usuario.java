@@ -24,6 +24,11 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
    
+    public void realizarPostagem(String descricao, Date data, int idPostagem, Trabalho trabalho) {
+        Postagem auxPostagem = new Postagem(descricao, data, idPostagem, this, trabalho);
+        postagens.add(auxPostagem);
+        trabalho.getPostagens().add(auxPostagem);
+    }
 
 
     public Nome getNome() {

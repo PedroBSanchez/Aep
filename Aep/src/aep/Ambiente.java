@@ -1,10 +1,21 @@
 package aep;
 
+import aep.valueObjects.Descricao;
+
 public class Ambiente {
     
     private String zona;
-    private String descricao;
+    private Descricao descricao;
     private int idAmbiente;
+
+
+    public Ambiente(String zona, String descricao, int idAmbiente) {
+        setZona(zona);
+        this.descricao = new Descricao(descricao);
+        setIdAmbiente(idAmbiente);
+    }
+
+
 
     public String getZona() {
         return zona;
@@ -14,13 +25,7 @@ public class Ambiente {
         this.zona = zona;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+   
 
     public int getIdAmbiente() {
         return idAmbiente;

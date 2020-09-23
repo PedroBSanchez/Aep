@@ -14,24 +14,37 @@ public class Trabalho {
     private int idTrabalho;
 
     //Relações
-    private List<EpiTrabalho> Epis = new ArrayList<>();   
+    private List<EpiTrabalho> epis = new ArrayList<>();   
     private List<Postagem> postagens = new ArrayList<>(); //Postagens existentes sobre cada trabalho, são adicionadas pelo usuário
     private List<Ambiente> ambientes = new ArrayList<>(); //Ambientes de cada trabalho (1..*)
     private NivelDeRisco nivelDeRisco;
     
 
-    public Trabalho(String descricao, String exercicio, String risco, int idTrabalho) {
+    public Trabalho(String descricao, String exercicio, String risco, int idTrabalho, NivelDeRisco nivelDeRisco, Ambiente ambiente) {
             this.descricao = new Descricao(descricao);
             setExercicio(exercicio);
             setRisco(risco);
             setIdTrabalho(idTrabalho);
+            setNivelDeRisco(nivelDeRisco);
+            ambientes.add(ambiente);
+    }
+
+    public void addEpiTrabalho(EpiTrabalho equipamento) {
+        epis.add(equipamento);
+        equipamento.getTrabalhos().add(this);
+    }
+
+    public void addAmbiente(Ambiente ambiente) {
+        ambientes.add(ambiente);
     }
 
 
 
 
+    public List<Postagem> getPostagens() {
+        return postagens;
+    }
 
-   
 
     public String getExercicio() {
         return exercicio;
@@ -57,6 +70,13 @@ public class Trabalho {
         this.idTrabalho = idTrabalho;
     }
 
+
+    public void setNivelDeRisco(NivelDeRisco nivelDeRisco) {
+        this.nivelDeRisco = nivelDeRisco;
+    }
+    public NivelDeRisco getNivelDeRisco() {
+        return nivelDeRisco;
+    }
     
 
 }
