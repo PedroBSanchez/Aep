@@ -12,6 +12,9 @@ public class Nome {
 
     public static void validaNome(String valor) {
         
+        if (valor == null || valor.trim().split(" ").length < 2) {
+            throw new RuntimeException("Nome deve ser composto por mais de uma palavra");
+        }
     }
 
     public void setValor(String valor) {

@@ -10,7 +10,9 @@ public class Email {
     }
 
     public static void validaEmail(String valor) {
-        
+        if (valor == null || !valor.contains("@") || valor.trim().split("@").length < 2) {
+            throw new RuntimeException("Email deve possui um domínio e uma extensão");
+        }
     }
 
 

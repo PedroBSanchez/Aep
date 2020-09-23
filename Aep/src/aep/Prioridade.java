@@ -1,19 +1,19 @@
 package aep;
 
+import aep.valueObjects.Descricao;
+
 public class Prioridade {
     
-    private String descricao;
+    private Descricao descricao;
     private int nivel;
     private int idPrioridade;
 
-    
-    public String getDescricao() {
-        return descricao;
+    public Prioridade(String descricao, int nivel, int idPrioridade) {
+        this.descricao = new Descricao(descricao);
+        setNivel(nivel);
+        setIdPrioridade(idPrioridade);
     }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+   
 
     public int getNivel() {
         return nivel;

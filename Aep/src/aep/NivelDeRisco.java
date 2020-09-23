@@ -1,18 +1,20 @@
 package aep;
 
+import aep.valueObjects.Descricao;
+
 public class NivelDeRisco {
     
-    private String descricao;
+    private Descricao descricao;
     private int nivel;
     private int idNivelDeRisco;
 
-    public String getDescricao() {
-        return descricao;
+
+    public NivelDeRisco(String descricao, int nivel, int idNivelDeRisco) {
+        this.descricao = new Descricao(descricao);
+        setNivel(nivel);
+        setIdNivelDeRisco(idNivelDeRisco);
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 
     public int getNivel() {
         return nivel;

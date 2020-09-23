@@ -1,19 +1,37 @@
 package aep;
 
+import aep.valueObjects.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Trabalho {
     
-    private String descricao;
+    
+    private Descricao descricao;
     private String exercicio;
-    private String riscos;
+    private String risco;
     private int idTrabalho;
 
-    public String getDescricao() {
-        return descricao;
+    //Relações
+    private List<EpiTrabalho> Epis = new ArrayList<>();   
+    private List<Postagem> postagens = new ArrayList<>(); //Postagens existentes sobre cada trabalho, são adicionadas pelo usuário
+    private List<Ambiente> ambientes = new ArrayList<>(); //Ambientes de cada trabalho (1..*)
+    private NivelDeRisco nivelDeRisco;
+    
+
+    public Trabalho(String descricao, String exercicio, String risco, int idTrabalho) {
+            this.descricao = new Descricao(descricao);
+            setExercicio(exercicio);
+            setRisco(risco);
+            setIdTrabalho(idTrabalho);
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+
+
+
+
+   
 
     public String getExercicio() {
         return exercicio;
@@ -23,12 +41,12 @@ public class Trabalho {
         this.exercicio = exercicio;
     }
 
-    public String getRiscos() {
-        return riscos;
+    public String getRisco() {
+        return risco;
     }
 
-    public void setRiscos(String riscos) {
-        this.riscos = riscos;
+    public void setRisco(String riscos) {
+        this.risco = riscos;
     }
 
     public int getIdTrabalho() {
