@@ -3,7 +3,9 @@ package aep;
 import aep.valueObjects.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Trabalho {
     
@@ -14,8 +16,8 @@ public class Trabalho {
     private int idTrabalho;
 
     //Relações
-    private List<EpiTrabalho> epis = new ArrayList<>();   
-    private List<Postagem> postagens = new ArrayList<>(); //Postagens existentes sobre cada trabalho, são adicionadas pelo usuário
+    private Set<EpiTrabalho> epis = new HashSet<>();   
+    private Set<Postagem> postagens = new HashSet<>(); //Postagens existentes sobre cada trabalho, são adicionadas pelo usuário
     private List<Ambiente> ambientes = new ArrayList<>(); //Ambientes de cada trabalho (1..*)
     private NivelDeRisco nivelDeRisco;
     
@@ -30,9 +32,20 @@ public class Trabalho {
     }
 
     public void addEpiTrabalho(EpiTrabalho equipamento) {
-        epis.add(equipamento);
-        equipamento.getTrabalhos().add(this);
+        if (this.epis.contains(equipamento)) {
+            return;
+        }
+        this.epis.add(equipamento);
     }
+
+    public void addPostagem(Postagem postagem) {
+        if (this.postagens.contains(postagem)) {
+            return;
+        }
+        this.postagens.add(postagem);
+    }
+
+
 
     public void addAmbiente(Ambiente ambiente) {
         ambientes.add(ambiente);
@@ -41,7 +54,7 @@ public class Trabalho {
 
 
 
-    public List<Postagem> getPostagens() {
+    public Set<Postagem> getPostagens() {
         return postagens;
     }
 

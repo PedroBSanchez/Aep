@@ -13,7 +13,6 @@ public class EpiTrabalho {
 
     //Relações
     private Prioridade prioridade;
-    private List<Trabalho> trabalhos = new ArrayList<>(); //São adicionados trabalhos a lista quando um trabalho em específico adiciona um Epi
 
 
     public EpiTrabalho(String funcao, String descricao, int idEquipamento, Prioridade prioridade) {
@@ -25,10 +24,26 @@ public class EpiTrabalho {
     }
 
 
-    public List<Trabalho> getTrabalhos() {
-        return trabalhos;
+    @Override
+    public int hashCode() {
+        return descricao.hashCode();
     }
 
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+        if (!(other instanceof EpiTrabalho)) {
+            return false;
+        }
+        EpiTrabalho auxOther = (EpiTrabalho) other;
+        if (this.descricao.equals(auxOther.descricao)) {
+            return true;
+        }
+        return false;
+    }
     
 
 

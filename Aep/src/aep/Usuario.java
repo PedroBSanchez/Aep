@@ -1,8 +1,10 @@
 package aep;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import aep.valueObjects.*;
 
@@ -14,8 +16,7 @@ public class Usuario {
     private int idUsuario;
     
     //Relações
-    private List<Postagem> postagens = new ArrayList<>();
-
+    private Set<Postagem> postagens = new HashSet<>();
 
     public Usuario(String nome, String email, String senha, int idUsuario) {
         this.nome = new Nome(nome);
@@ -26,9 +27,13 @@ public class Usuario {
    
     public void realizarPostagem(String descricao, Date data, int idPostagem, Trabalho trabalho) {
         Postagem auxPostagem = new Postagem(descricao, data, idPostagem, this, trabalho);
-        postagens.add(auxPostagem);
-        trabalho.getPostagens().add(auxPostagem);
+        trabalho.addPostagem(auxPostagem);
+        if (this.postagens.contains(auxPostagem)) {
+            return;
+        }
+        this.postagens.add(auxPostagem);
     }
+        
 
 
     public Nome getNome() {
@@ -64,7 +69,9 @@ public class Usuario {
     }
 
 
-    
+    public Set<Postagem> getPostagens() {
+        return postagens;
+    }
 
 
 }

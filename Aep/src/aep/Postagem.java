@@ -23,6 +23,31 @@ public class Postagem {
     }
 
 
+    @Override
+    public int hashCode() {
+        return descricao.hashCode();
+    }
+
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+        if (!(other instanceof Postagem)) {
+            return false;
+        }
+        Postagem auxOther = (Postagem) other;
+        if (this.descricao.equals(auxOther.descricao)) {
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
 
     public void setTrabalho(Trabalho trabalho) {
         this.trabalho = trabalho;
